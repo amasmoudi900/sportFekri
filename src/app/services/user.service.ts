@@ -46,6 +46,7 @@ export class UserService {
     return this.http.put(this.userUrl, newUser);
   }
 
+  // Login method 
   login(user) {
     this.http.post<{ user: any, message: string }>(this.userUrl + "/signin", user).subscribe(
       (res) => {
@@ -65,6 +66,7 @@ export class UserService {
     )
   }
 
+  // Logout method
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
