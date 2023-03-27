@@ -1,0 +1,45 @@
+<div class="site-section bg-dark mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="widget-next-match">
+                    <form class="mt-3 mb-3">
+                        <div class="text-center">
+                            <label for="">Filter By Team One | Team Two </label>
+                            <input type="text" [(ngModel)]='val' 
+                            [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </form>
+                    Here value : {{val}}
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Score One</th>
+                                <th>Score Two</th>
+                                <th>Team One</th>
+                                <th>Team Two</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let elt of matches | myFilter:val">
+                                <td>{{elt._id}}</td>
+                                <td>{{elt.scoreOne}}</td>
+                                <td><strong class="text-white">{{elt.scoreTwo}}</strong></td>
+                                <td>{{elt.teamOne}}</td>
+                                <td>{{elt.teamTwo}}</td>
+                                <td>
+                                    <button class="btn btn-success" (click)="displayMatch(elt._id)">Display</button>
+                                    <button class="btn btn-warning" (click)="goToEdit(elt._id)">Edit</button>
+                                    <button class="btn btn-danger" (click)="deleteMatch(elt._id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
